@@ -7,24 +7,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giphy Assignment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
     <div class="container">
-        <div id="buttons-view"></div>
-<!--      <form id="animal-form">
-            <label for="animal-input">Add another animal</label>
-            <input type="text" id="animal-input">
-            <br>
-      
-            <input id="add-animal" type="submit" value="Search">
-          </form>
-          --> 
-          <div id="images">
-          
+        <div class="jumbotron" style="color: rgb(77, 72, 72);">
+            <h1 class="text-center">
+                <strong>Cute Animal Gifs</strong>
+            </h1>
+            <h4>Search or add your own animal to see any collection of animal gifs</h4>
         </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div id="buttons-view" class="mx-auto"></div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        Add Another Button
+                    </div>
+                    <div class="card-body">
+                        <form id="animal-form">
+                            <h6 class="card-title"><label for="animal-input">Enter Animal below</label></h6>
+                            <input type="text" id="animal-input" class="pb-1 mb-3">
+                            <br>
+
+                            <input id="add-animal" type="submit" value="Add Animal" class="btn btn-primary btn-sm">
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="images">
+            </div>
+        </div>
+
+
+        <!-- -->
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 

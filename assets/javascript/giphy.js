@@ -1,7 +1,5 @@
             // Initial array of topics
-            var topics = ["Dog", "Cat", "Goat", "Turtle", "Sheep", "Cow", "Skunk", "Bird", "Fish", "Raccoon", "Possum", "Lizard"];
-
-            //displayGifs();
+            var topics = ["Dog", "Cat", "Goat", "Giraffe", "Sheep", "Cow", "Skunk", "Bird", "Squirrel", "Raccoon", "Possum", "Deer"];
 
             function displayGifs() {
 
@@ -11,10 +9,9 @@
 
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=cute+" + topic + "&limit=10&api_key=KoLknmRTMIRcsRhLhOdl1cKs11fcWVkR";
 
-
-                //// Step 1 - Data retreival etc. Refer to working-movie-app-easier for refernce. Store the AJAX request in the results variable
-                //// Step 2 - Loop through the "topics" array and display the images. Refer to dynamic-elements-solution for reference. 
-                //// Step 3 - Add the if, else statement to the on click event ($(".gif").on("click", function()). Refer to pausing-gifs-solutions
+                //// Step 1 - Data retreival etc. Store the AJAX request in the results variable
+                //// Step 2 - Loop through the "topics" array and display the images. 
+                //// Step 3 - Add the if, else statement to the on click event ($(".gif").on("click", function() to toggle still and animated image
                 $.ajax({
                     url: queryURL,
                     method: "GET"
@@ -31,15 +28,11 @@
 
                         // Creating a paragraph tag with the result item's rating
                         var p = $("<p>").text("Rating: " + results[i].rating);
-                        // Creating and storing an image tag
-                        // Saving the image
-                        // var imageURL = response.data.url;
 
-                        // animated image: results[i].images
+                        // Creating and storing still and animated images
                         var imageUrl = results[i].images.fixed_height_still.url;
                         var imageAnimateUrl = results[i].images.fixed_height_downsampled.url;
-                        console.log("Still State image is " + imageUrl);
-                        console.log("Animated State image is " + imageAnimateUrl);
+
                         // // Creating and storing img tag
                         var imageTopic = $("<img>");
 
@@ -57,36 +50,27 @@
                         imageDiv.append(p);
                         imageDiv.append(imageTopic);
 
-                        // // // Prepending the imageTopic to the "#images" div
+                        // Prepending the imageTopic to the "#images" div
                         $("#images").prepend(imageDiv);
 
 
                     } $(".gif").click(function () {
-                        // console.log("here");
-
                         var state = $(this).attr("data-state");
-                        // console.log("This is the current state of this click: " + state);
-                        // console.log("I clicked the image!");
-                        /// PICK UP HERE revist the if statement - this may be the issue   
+
                         if (state === "still") {
-                            console.log("It's Still");
                             $(this).attr("src", $(this).attr("data-animate"));
                             $(this).attr("data-state", "animate");
-                            // console.log("This should be animate " + state);
                         } else if (state === "animate") {
-                            console.log("Its animated");
                             $(this).attr("src", $(this).attr("data-still"));
                             $(this).attr("data-state", "still");
                         }
                     });
-
                 });
-
             }
             function createButtons() {
                 // Empty previously created buttons 
                 //NOTE: not sure I need this code
-                //$("#buttons-view").empty();
+                $("#buttons-view").empty();
 
                 // Looping through the arrqay of topics
                 for (var i = 0; i < topics.length; i++) {
@@ -104,18 +88,18 @@
                     $("#buttons-view").append(a);
                 }
             };
-             // This function handles events where a movie button is clicked
-    //   $("#add-animal").on("click", function(event) {
-    //     event.preventDefault();
-    //     // This line grabs the input from the textbox
-    //     var topic = $("#animal-input").val().trim();
+       // Function handling click event when add animal button is clicked
+      $("#add-animal").on("click", function(event) {
+        event.preventDefault();
+        // This line grabs the input from the textbox
+        var topic = $("#animal-input").val().trim();
 
-    //     // Adding movie from the textbox to our array
-    //     topics.push(topic);
+        // Adding movie from the textbox to topic array
+        topics.push(topic);
 
-    //     // Calling createButtons which handles the processing of our topics array
-    //     createButtons();
-    //   });
+        // Creating new button by calling createButtons function
+        createButtons(topic);
+      });
 
 
             $(document).on("click", ".topic", displayGifs);
