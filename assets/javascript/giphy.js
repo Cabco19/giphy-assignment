@@ -1,5 +1,5 @@
 // Initial array of topics
-var topics = ["Dog", "Cat", "Goat", "Giraffe", "Sheep", "Cow",    "Skunk", "Bird", "Squirrel", "Raccoon", "Possum", "Deer"];
+var topics = ["Dog", "Cat", "Goat", "Giraffe", "Sheep", "Seal", "Skunk", "Bird", "Squirrel", "Raccoon", "Possum", "Deer"];
 
 function displayGifs() {
     // queryURL for Giphy API
